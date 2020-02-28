@@ -19,6 +19,8 @@ class framework {
     public function add_action()
     {
         add_action( 'wp_enqueue_scripts', [ $this,'nitro_enqueue_style' ] );
+        add_action( 'init', [ $this,'loadPosts' ] );
+        add_action( 'init', [ $this,'theme_sidebar' ] );
 
     }
 
@@ -27,7 +29,12 @@ class framework {
      */
     public function loadPosts()
     {
-        
+        $post_types = ['banner'];
+
+        foreach($post_types as $post_type){
+
+            require_once POST_TYPES . $post_type . '.php';
+        }        
     }
 
     /* 
@@ -52,6 +59,15 @@ class framework {
     public function loadWidgets()
     {
         
+    }
+
+    /* 
+        Adding sidebar
+    */
+    public function theme_sidebar()
+    {
+        add_theme_support( 'post-thumbnails' );
+
     }
 
     /* 

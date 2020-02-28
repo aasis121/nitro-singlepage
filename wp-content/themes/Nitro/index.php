@@ -1,12 +1,15 @@
-<?php get_header() ?>
-
+<?php get_header();?>
+    <?php
+    while( have_posts()): the_post();
+   
      
-    <div class="site-blocks-cover overlay" style="background-image: url(<?php echo IMAGE_URI;?>hero_2.jpg);" data-aos="fade" id="home-section">
+endwhile;
+       ?>
+     
+    <div class="site-blocks-cover overlay" style="background-image: url(<?php  the_post_thumbnail_url('full');?>);" data-aos="fade" id="home-section">
 
       <div class="container">
         <div class="row align-items-center justify-content-center">
-
-          
           <div class="col-md-8 mt-lg-5 text-center">
             <h1 class="text-uppercase" data-aos="fade-up">Welcome</h1>
             <p class="mb-5 desc"  data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio soluta eius error.</p>
